@@ -234,7 +234,8 @@
 .sobre-img img {
   width: 100%;
   height: 100%;
-  object-fit: cover;         /* volta para cover, mas agora não corta */
+  object-fit: cover;
+  object-position: center 20%;   /* ← NOVO: foca no rosto */
   display: block;
 }
     .sobre-texto h3 { font-size: 1.6rem; color: var(--marrom-escuro); margin-bottom: 16px; }
@@ -422,7 +423,7 @@
       <h2 class="section-title">Uma jornada dedicada ao cuidado</h2>
       <div class="sobre-grid">
         <div class="sobre-img">
-  <img src="Fotos/sentada.jpeg" alt="Thayse no consultório" style="width:100%;height:100%;border-radius:20px;object-fit:contain;">
+  <img src="Fotos/sentada.jpeg" alt="Thayse no consultório" style="width:100%;height:100%;border-radius:20px;object-fit:cover;object-position:center 20%;">
 </div>
         <div class="sobre-texto">
           <h3>Thayse Bianchin Rambo — Psicóloga com formação sólida e olhar humano</h3>
