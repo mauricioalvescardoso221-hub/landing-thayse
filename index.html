@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Thayse Bianchin Rambo | Psicóloga — Saúde Mental e TCC</title>
-  <meta name="description" content="Atendimento psicológico online com a psicóloga Thayse Bianchin Rambo (CRP 07/32555). Terapia Cognitivo Comportamental (TCC) para adultos, adolescentes, LGBTQIAPN+ e idosos.">
+  <title>Thayse Bianchin Rambo | Psicóloga</title>
+  <meta name="description" content="Atendimento psicológico online com a psicóloga Thayse Bianchin Rambo (CRP 07/32555). Terapia Cognitivo Comportamental (TCC).">
   <style>
     :root {
       --bege: #F5EDDC;
@@ -17,7 +17,6 @@
       --branco: #FFFFFF;
       --verde-whats: #25D366;
       --verde-whats-escuro: #1DA851;
-      --verde-sucesso: #2E8B57;
       --sombra: 0 8px 30px rgba(122, 106, 79, 0.12);
       --raio: 20px;
     }
@@ -32,7 +31,7 @@
       overflow-x: hidden;
     }
     .container {
-      max-width: 520px;
+      max-width: 560px;
       margin: 0 auto;
       padding: 48px 24px 60px;
       display: flex;
@@ -40,7 +39,7 @@
       align-items: center;
       text-align: center;
     }
-    /* ===== FOTO DE PERFIL ===== */
+    /* ===== TOPO: FOTO + NOME + TEXTO ===== */
     .avatar {
       width: 130px;
       height: 130px;
@@ -58,7 +57,6 @@
       object-position: center 20%;
       display: block;
     }
-    /* ===== NOME E TÍTULO ===== */
     .nome {
       font-size: 1.6rem;
       font-weight: 800;
@@ -69,13 +67,29 @@
       color: var(--marrom);
       font-weight: 600;
       font-size: 1rem;
-      margin-bottom: 6px;
+      margin-bottom: 8px;
     }
-    .credenciais {
+    .crp {
       font-size: 0.85rem;
       color: var(--texto);
-      margin-bottom: 26px;
-      opacity: 0.9;
+      margin-bottom: 20px;
+    }
+    .apresentacao {
+      max-width: 480px;
+      font-size: 0.98rem;
+      margin-bottom: 40px;
+      opacity: 0.92;
+    }
+    .seta {
+      font-size: 1.6rem;
+      color: var(--marrom);
+      opacity: 0.6;
+      margin-bottom: 30px;
+      animation: flutuar 1.8s ease-in-out infinite;
+    }
+    @keyframes flutuar {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(8px); }
     }
     /* ===== BOTÕES ===== */
     .botoes {
@@ -83,7 +97,6 @@
       display: flex;
       flex-direction: column;
       gap: 14px;
-      margin-bottom: 30px;
     }
     .btn {
       display: flex;
@@ -104,12 +117,12 @@
       color: inherit;
     }
     .btn:hover { transform: translateY(-2px); }
-    .btn-primario {
-      background: var(--verde-whats);
+    .btn-marrom {
+      background: var(--marrom);
       color: #fff;
-      box-shadow: 0 6px 20px rgba(37, 211, 102, 0.3);
+      box-shadow: var(--sombra);
     }
-    .btn-primario:hover { background: var(--verde-whats-escuro); }
+    .btn-marrom:hover { background: var(--marrom-escuro); }
     .btn-branco {
       background: var(--branco);
       color: var(--marrom-escuro);
@@ -117,133 +130,85 @@
       border-color: rgba(122, 106, 79, 0.15);
     }
     .btn-branco:hover { box-shadow: 0 10px 30px rgba(122, 106, 79, 0.2); }
-    /* ===== SEÇÃO SOBRE ===== */
-    .sobre {
-      position: relative;
-      width: 100%;
-      background: var(--branco);
-      border-radius: var(--raio);
-      padding: 34px 28px;
-      box-shadow: var(--sombra);
-      text-align: left;
-      margin-bottom: 30px;
-      display: none;
-    }
-    .sobre.aberto { display: block; }
-    .fechar {
-      position: absolute;
-      top: 14px;
-      right: 14px;
-      width: 34px;
-      height: 34px;
-      border: none;
-      background: var(--bege-claro);
-      color: var(--marrom-escuro);
-      border-radius: 50%;
-      font-size: 1rem;
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      transition: background 0.2s;
-    }
-    .fechar:hover { background: var(--amarelo); }
-    .cabecalho-sobre { text-align: center; margin-bottom: 22px; }
-    .nome-sobre {
-      font-size: 1.35rem;
-      font-weight: 800;
-      color: var(--marrom-escuro);
-      margin-bottom: 6px;
-    }
-    .crp-linha {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 8px;
-      font-size: 0.92rem;
-      font-weight: 600;
-      color: var(--texto);
-      flex-wrap: wrap;
-    }
-    .selo {
-      display: inline-flex;
-      align-items: center;
-      gap: 4px;
-      background: rgba(46, 139, 87, 0.12);
-      color: var(--verde-sucesso);
-      font-size: 0.75rem;
-      font-weight: 700;
-      padding: 3px 10px;
-      border-radius: 50px;
-    }
-    .info-mini {
+    /* ===== INSTAGRAM + WHATSAPP (lado a lado) ===== */
+    .dupla {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 10px;
-      margin-bottom: 20px;
+      gap: 14px;
+      width: 100%;
     }
-    .mini-box {
-      background: var(--bege-claro);
-      border-radius: 14px;
-      padding: 12px 14px;
-      text-align: center;
-    }
-    .mini-rotulo {
-      font-size: 0.72rem;
-      text-transform: uppercase;
-      letter-spacing: 1px;
-      color: var(--marrom);
-      font-weight: 700;
-      margin-bottom: 2px;
-    }
-    .mini-valor {
-      font-size: 0.95rem;
-      font-weight: 600;
-      color: var(--marrom-escuro);
-    }
-    .divisoria {
-      border: none;
-      border-top: 1px solid rgba(122, 106, 79, 0.15);
-      margin: 22px 0;
-    }
-    .bloco { margin-bottom: 22px; }
-    .bloco:last-child { margin-bottom: 0; }
-    .rotulo {
-      font-size: 0.72rem;
-      text-transform: uppercase;
-      letter-spacing: 1.2px;
-      color: var(--marrom);
-      font-weight: 700;
-      margin-bottom: 8px;
-    }
-    .valor {
-      font-size: 0.98rem;
-      font-weight: 600;
-      color: var(--marrom-escuro);
-    }
-    .chips {
+    .btn-dupla {
       display: flex;
-      flex-wrap: wrap;
+      align-items: center;
+      justify-content: center;
       gap: 8px;
-    }
-    .chip {
-      background: var(--bege-claro);
-      border: 1px solid rgba(122, 106, 79, 0.12);
+      padding: 15px 16px;
       border-radius: 50px;
-      padding: 5px 13px;
-      font-size: 0.8rem;
-      font-weight: 500;
-      color: var(--texto);
-    }
-    .sobre-texto p {
+      text-decoration: none;
+      font-weight: 600;
       font-size: 0.95rem;
-      margin-bottom: 12px;
+      border: 2px solid transparent;
+      transition: transform 0.2s, box-shadow 0.3s;
     }
-    .sobre-texto p:last-child { margin-bottom: 0; }
+    .btn-dupla:hover { transform: translateY(-2px); }
+    .btn-instagram {
+      background: linear-gradient(45deg, #F58529, #DD2A7B, #8134AF);
+      color: #fff;
+      box-shadow: 0 6px 18px rgba(221, 42, 123, 0.3);
+    }
+    .btn-whats {
+      background: var(--verde-whats);
+      color: #fff;
+      box-shadow: 0 6px 18px rgba(37, 211, 102, 0.3);
+    }
+    .btn-whats:hover { background: var(--verde-whats-escuro); }
+    /* ===== BOTÃO GRANDE "CONHEÇA MEU TRABALHO" + FOTO ===== */
+    .trabalho {
+      width: 100%;
+      margin-top: 14px;
+      background: var(--branco);
+      border-radius: var(--raio);
+      padding: 20px;
+      box-shadow: var(--sombra);
+      text-decoration: none;
+      color: inherit;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      transition: transform 0.2s, box-shadow 0.3s;
+    }
+    .trabalho:hover { transform: translateY(-3px); box-shadow: 0 12px 32px rgba(122, 106, 79, 0.2); }
+    .trabalho-foto {
+      width: 84px;
+      height: 84px;
+      border-radius: 16px;
+      overflow: hidden;
+      flex-shrink: 0;
+    }
+    .trabalho-foto img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center 20%;
+      display: block;
+    }
+    .trabalho-texto { text-align: left; flex: 1; }
+    .trabalho-texto strong {
+      display: block;
+      color: var(--marrom-escuro);
+      font-size: 1.05rem;
+      margin-bottom: 4px;
+    }
+    .trabalho-texto span {
+      font-size: 0.85rem;
+      color: var(--texto);
+      opacity: 0.85;
+    }
+    .trabalho-seta { font-size: 1.3rem; color: var(--marrom); }
     /* ===== RODAPÉ ===== */
     footer {
       width: 100%;
-      margin-top: 10px;
+      margin-top: 34px;
       font-size: 0.85rem;
       color: var(--texto);
       opacity: 0.85;
@@ -253,134 +218,67 @@
     @media (max-width: 480px) {
       .container { padding: 36px 20px 50px; }
       .nome { font-size: 1.4rem; }
-      .sobre { padding: 28px 20px; }
-      .info-mini { grid-template-columns: 1fr; }
+      .dupla { grid-template-columns: 1fr; }
     }
   </style>
 </head>
 <body>
   <div class="container">
-    <!-- FOTO DE PERFIL -->
+    <!-- FOTO -->
     <div class="avatar">
       <img src="Fotos/sorrindo.jpeg" alt="Psicóloga Thayse Bianchin Rambo">
     </div>
 
-    <!-- NOME E CREDENCIAIS -->
+    <!-- NOME + INFORMAÇÕES BÁSICAS -->
     <h1 class="nome">Thayse Bianchin Rambo</h1>
-    <p class="cargo">Psicóloga Clínica</p>
-    <p class="credenciais">
-      🎓 Formada em Psicologia (2020) · 📚 Pós-graduada em Saúde Mental<br>
-      🧩 Especialista em TEA e ABA
+    <p class="cargo">Psicóloga Clínica · CRP 07/32555</p>
+    <p class="crp">Terapia Cognitivo Comportamental (TCC)</p>
+
+    <!-- TEXTO CURTO DE APRESENTAÇÃO -->
+    <p class="apresentacao">
+      Oi! Eu sou a psicóloga Thayse Bianchin Rambo. Meu trabalho é construir um espaço leve, seguro e sem julgamentos, onde você possa falar sobre o que sente e encontrar caminhos mais tranquilos para viver.
     </p>
 
-    <!-- PILHA DE BOTÕES -->
+    <!-- SETA INDICANDO ROLAGEM -->
+    <div class="seta">↓</div>
+
+    <!-- BOTÕES NO FINAL -->
     <div class="botoes">
-      <button id="btnSobre" class="btn btn-branco" onclick="alternarSobre()">🌸 Saiba mais sobre mim</button>
-      <a class="btn btn-primario" href="https://wa.me/55997052670?text=Ol%C3%A1%2C%20Thayse!%20Vim%20pelo%20seu%20site%20e%20gostaria%20de%20saber%20mais%20sobre%20o%20atendimento%20psicol%C3%B3gico." target="_blank" rel="noopener">
-        💬 Agendar pelo WhatsApp
+      <!-- Botão "Quero saber mais" → abre o formulário de interesse (Google Forms)
+           ⚠️ TROQUE o href="#" pelo link do Google Forms quando criar -->
+      <a class="btn btn-marrom" href="#">
+        📝 Quero saber mais sobre a terapia
+      </a>
+
+      <!-- Instagram + WhatsApp lado a lado
+           ⚠️ TROQUE o href do Instagram pelo perfil real dela -->
+      <div class="dupla">
+        <a class="btn-dupla btn-instagram" href="https://www.instagram.com/" target="_blank" rel="noopener">
+          📸 Instagram
+        </a>
+        <a class="btn-dupla btn-whats" href="https://wa.me/55997052670?text=Ol%C3%A1%2C%20Thayse!%20Vim%20pelo%20seu%20site%20e%20gostaria%20de%20saber%20mais%20sobre%20o%20atendimento." target="_blank" rel="noopener">
+          💬 WhatsApp
+        </a>
+      </div>
+
+      <!-- Botão grande "Conheça meu trabalho" + foto → abre trabalho.html -->
+      <a class="trabalho" href="trabalho.html">
+        <div class="trabalho-foto">
+          <img src="Fotos/sentada.jpeg" alt="Thayse no consultório">
+        </div>
+        <div class="trabalho-texto">
+          <strong>Conheça meu trabalho</strong>
+          <span>Saiba como funciona o atendimento e como a terapia pode ajudar você</span>
+        </div>
+        <span class="trabalho-seta">→</span>
       </a>
     </div>
 
-    <!-- SEÇÃO SOBRE -->
-    <section id="sobre" class="sobre">
-      <button class="fechar" onclick="fecharSobre()" aria-label="Fechar">✕</button>
-
-      <div class="cabecalho-sobre">
-        <p class="nome-sobre">Thayse Bianchin Rambo</p>
-        <p class="crp-linha">
-          CRP: 07/32555
-          <span class="selo">✓ CRP Verificado</span>
-        </p>
-      </div>
-
-      <div class="info-mini">
-        <div class="mini-box">
-          <p class="mini-rotulo">Atendimento</p>
-          <p class="mini-valor">Online</p>
-        </div>
-        <div class="mini-box">
-          <p class="mini-rotulo">Idiomas</p>
-          <p class="mini-valor">Português</p>
-        </div>
-      </div>
-
-      <hr class="divisoria">
-
-      <div class="bloco">
-        <p class="rotulo">Abordagem principal</p>
-        <p class="valor">Terapia Cognitivo Comportamental (TCC)</p>
-      </div>
-
-      <div class="bloco">
-        <p class="rotulo">Público alvo</p>
-        <div class="chips">
-          <span class="chip">Adultos</span>
-          <span class="chip">Adolescentes</span>
-          <span class="chip">LGBTQIAPN+</span>
-          <span class="chip">Idosos</span>
-        </div>
-      </div>
-
-      <div class="bloco">
-        <p class="rotulo">Minha experiência terapêutica</p>
-        <div class="chips">
-          <span class="chip">Ansiedade</span>
-          <span class="chip">Autoestima</span>
-          <span class="chip">Burnout e estresse</span>
-          <span class="chip">Distúrbio alimentar</span>
-          <span class="chip">TDAH / Hiperatividade</span>
-          <span class="chip">Relacionamento familiar</span>
-          <span class="chip">Transtorno bipolar</span>
-          <span class="chip">Obesidade</span>
-          <span class="chip">Aposentadoria e envelhecimento</span>
-          <span class="chip">Borderline</span>
-          <span class="chip">Compulsão</span>
-          <span class="chip">Distúrbios do sono</span>
-          <span class="chip">LGBTQIAPN+</span>
-          <span class="chip">Síndrome do pânico</span>
-          <span class="chip">Transtorno de humor</span>
-          <span class="chip">Isolamento social</span>
-          <span class="chip">Autoconhecimento</span>
-          <span class="chip">Bulimia</span>
-          <span class="chip">Dependência de jogos</span>
-          <span class="chip">Estresse pós-traumático</span>
-          <span class="chip">Relacionamento afetivo</span>
-          <span class="chip">Terapia para adolescentes</span>
-          <span class="chip">Violência doméstica</span>
-        </div>
-      </div>
-
-      <hr class="divisoria">
-
-      <div class="bloco sobre-texto">
-        <p class="rotulo">Mais sobre mim</p>
-        <p>Oi! Eu sou a psicóloga Thayse Bianchin Rambo, estou aqui para acolher as pequenas transformações que acontecem quando alguém se sente realmente visto. Meu trabalho é construir um espaço leve, seguro e sem julgamentos, onde você possa falar sobre o que sente, entender seus processos e encontrar caminhos mais tranquilos para viver.</p>
-        <p>Acredito que cada pessoa carrega sua própria história, e meu papel é caminhar ao seu lado nesse processo — respeitando seu tempo, suas experiências e suas necessidades. Trabalho de forma simples, humana e próxima, valorizando o diálogo, a autenticidade e o autoconhecimento.</p>
-        <p>Seja para lidar com ansiedade, tristeza, conflitos, mudanças de vida ou apenas para se entender melhor, estou aqui para ajudar você a se fortalecer emocionalmente e construir uma vida com mais equilíbrio e sentido.</p>
-      </div>
-    </section>
-
     <!-- RODAPÉ -->
     <footer>
-      <p><strong>Thayse Bianchin Rambo</strong> — Psicóloga</p>
-      <p>Saúde Mental · TEA · ABA</p>
+      <p><strong>Thayse Bianchin Rambo</strong> — Psicóloga · CRP 07/32555</p>
       <p style="margin-top: 6px;">© 2026 · Todos os direitos reservados</p>
     </footer>
   </div>
-
-  <script>
-    function alternarSobre() {
-      var card = document.getElementById('sobre');
-      var btn = document.getElementById('btnSobre');
-      card.classList.toggle('aberto');
-      btn.textContent = card.classList.contains('aberto') ? '▲ Fechar' : '🌸 Saiba mais sobre mim';
-    }
-    function fecharSobre() {
-      var card = document.getElementById('sobre');
-      var btn = document.getElementById('btnSobre');
-      card.classList.remove('aberto');
-      btn.textContent = '🌸 Saiba mais sobre mim';
-    }
-  </script>
 </body>
 </html>

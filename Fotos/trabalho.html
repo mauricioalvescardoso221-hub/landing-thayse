@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Conheça meu trabalho | Thayse Bianchin Rambo</title>
+  <meta name="description" content="Conheça o trabalho da psicóloga Thayse Bianchin Rambo: abordagem, atendimento, como funcionam as sessões e como a terapia pode ajudar.">
+  <style>
+    :root {
+      --bege: #F5EDDC;
+      --bege-claro: #FAF6EC;
+      --amarelo: #F7E8B8;
+      --amarelo-suave: #FBF0D0;
+      --marrom: #7A6A4F;
+      --marrom-escuro: #5C4F3A;
+      --texto: #4A4234;
+      --branco: #FFFFFF;
+      --verde-whats: #25D366;
+      --verde-whats-escuro: #1DA851;
+      --sombra: 0 8px 30px rgba(122, 106, 79, 0.12);
+      --raio: 22px;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+      color: var(--texto);
+      background: var(--bege-claro);
+      line-height: 1.7;
+      overflow-x: hidden;
+    }
+    .container {
+      max-width: 680px;
+      margin: 0 auto;
+      padding: 40px 22px 70px;
+    }
+    /* ===== TOPO ===== */
+    .topo {
+      text-align: center;
+      margin-bottom: 40px;
+    }
+    .topo .voltar {
+      display: inline-block;
+      color: var(--marrom);
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 0.9rem;
+      margin-bottom: 20px;
+    }
+    .topo .voltar:hover { color: var(--marrom-escuro); }
+    .topo h1 {
+      font-size: 2rem;
+      color: var(--marrom-escuro);
+      font-weight: 800;
+    }
+    .topo p { color: var(--marrom); font-weight: 600; margin-top: 6px; }
+    /* ===== CARDS (aparecem ao rolar) ===== */
+    .card {
+      background: var(--branco);
+      border-radius: var(--raio);
+      padding: 34px 30px;
+      box-shadow: var(--sombra);
+      margin-bottom: 26px;
+      opacity: 0;
+      transform: translateY(40px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+    .card.visivel {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .card .rotulo {
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      color: var(--marrom);
+      font-weight: 700;
+      margin-bottom: 10px;
+    }
+    .card h2 {
+      color: var(--marrom-escuro);
+      font-size: 1.4rem;
+      margin-bottom: 12px;
+      font-weight: 800;
+    }
+    .card p { font-size: 0.98rem; margin-bottom: 12px; }
+    .card p:last-child { margin-bottom: 0; }
+    /* Card 1: identidade (nome, CRP, selo) */
+    .identidade { text-align: center; }
+    .identidade .nome {
+      font-size: 1.5rem;
+      font-weight: 800;
+      color: var(--marrom-escuro);
+      margin-bottom: 6px;
+    }
+    .identidade .cargo { color: var(--marrom); font-weight: 600; margin-bottom: 10px; }
+    .identidade .crp {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.92rem;
+      font-weight: 600;
+      color: var(--texto);
+      background: var(--bege-claro);
+      padding: 8px 16px;
+      border-radius: 50px;
+    }
+    .selo {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      background: rgba(46, 139, 87, 0.12);
+      color: #2E8B57;
+      font-size: 0.75rem;
+      font-weight: 700;
+      padding: 3px 10px;
+      border-radius: 50px;
+    }
+    /* Foto entre cards */
+    .foto {
+      border-radius: var(--raio);
+      overflow: hidden;
+      box-shadow: var(--sombra);
+      margin-bottom: 26px;
+      opacity: 0;
+      transform: translateY(40px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+    .foto.visivel { opacity: 1; transform: translateY(0); }
+    .foto img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center 20%;
+      display: block;
+      aspect-ratio: 4 / 3;
+    }
+    /* Listas dentro dos cards */
+    .lista { list-style: none; }
+    .lista li {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      padding: 8px 0;
+      font-size: 0.97rem;
+      border-bottom: 1px solid rgba(122, 106, 79, 0.1);
+    }
+    .lista li:last-child { border-bottom: none; }
+    .lista li::before { content: "✓"; color: var(--marrom); font-weight: 700; }
+    /* Chips (tags) */
+    .chips { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 6px; }
+    .chip {
+      background: var(--bege-claro);
+      border: 1px solid rgba(122, 106, 79, 0.12);
+      border-radius: 50px;
+      padding: 5px 13px;
+      font-size: 0.82rem;
+      font-weight: 500;
+      color: var(--texto);
+    }
+    /* Card final: Venha falar comigo */
+    .final {
+      background: linear-gradient(135deg, var(--marrom) 0%, var(--marrom-escuro) 100%);
+      color: #fff;
+      text-align: center;
+    }
+    .final h2 { color: #fff; }
+    .final p { color: rgba(255,255,255,0.9); }
+    .final .contatos { display: flex; flex-direction: column; gap: 12px; margin-top: 20px; }
+    .final .btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 15px 20px;
+      border-radius: 50px;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 0.98rem;
+      border: none;
+      cursor: pointer;
+      transition: transform 0.2s;
+    }
+    .final .btn:hover { transform: translateY(-2px); }
+    .btn-whats { background: var(--verde-whats); color: #fff; }
+    .btn-whats:hover { background: var(--verde-whats-escuro); }
+    .btn-instagram { background: linear-gradient(45deg, #F58529, #DD2A7B, #8134AF); color: #fff; }
+    .btn-branco { background: #fff; color: var(--marrom-escuro); }
+    /* ===== RODAPÉ ===== */
+    footer {
+      text-align: center;
+      margin-top: 30px;
+      font-size: 0.85rem;
+      color: var(--texto);
+      opacity: 0.85;
+    }
+    footer strong { color: var(--marrom-escuro); }
+    /* ===== RESPONSIVO ===== */
+    @media (max-width: 480px) {
+      .container { padding: 28px 16px 50px; }
+      .card { padding: 26px 20px; }
+      .topo h1 { font-size: 1.6rem; }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <!-- TOPO -->
+    <div class="topo">
+      <a class="voltar" href="index.html">← Voltar</a>
+      <h1>Conheça meu trabalho</h1>
+      <p>Um pouco sobre mim e como posso te ajudar</p>
+    </div>
+
+    <!-- CARD 1: IDENTIDADE (nome, CRP, selo) -->
+    <div class="card identidade">
+      <p class="nome">Thayse Bianchin Rambo</p>
+      <p class="cargo">Psicóloga Clínica</p>
+      <p class="crp">
+        CRP: 07/32555
+        <span class="selo">✓ CRP Verificado</span>
+      </p>
+    </div>
+
+    <!-- FOTO -->
+    <div class="foto">
+      <img src="Fotos/sorrindo.jpeg" alt="Psicóloga Thayse Bianchin Rambo">
+    </div>
+
+    <!-- CARD 2: APRESENTAÇÃO -->
+    <div class="card">
+      <p class="rotulo">Apresentação</p>
+      <h2>Um espaço seguro para você</h2>
+      <p>Oi! Eu sou a psicóloga Thayse Bianchin Rambo, estou aqui para acolher as pequenas transformações que acontecem quando alguém se sente realmente visto. Meu trabalho é construir um espaço leve, seguro e sem julgamentos, onde você possa falar sobre o que sente, entender seus processos e encontrar caminhos mais tranquilos para viver.</p>
+      <p>Acredito que cada pessoa carrega sua própria história, e meu papel é caminhar ao seu lado nesse processo — respeitando seu tempo, suas experiências e suas necessidades. Trabalho de forma simples, humana e próxima, valorizando o diálogo, a autenticidade e o autoconhecimento.</p>
+    </div>
+
+    <!-- CARD 3: ABORDAGEM -->
+    <div class="card">
+      <p class="rotulo">Abordagem</p>
+      <h2>Terapia Cognitivo Comportamental (TCC)</h2>
+      <p>A TCC é uma abordagem baseada em evidências que ajuda você a entender como seus pensamentos, emoções e comportamentos se conectam. Trabalhamos juntos para identificar padrões que causam sofrimento e construir formas mais saudáveis de lidar com eles.</p>
+      <div class="chips">
+        <span class="chip">Adultos</span>
+        <span class="chip">Adolescentes</span>
+        <span class="chip">LGBTQIAPN+</span>
+        <span class="chip">Idosos</span>
+      </div>
+    </div>
+
+    <!-- FOTO -->
+    <div class="foto">
+      <img src="Fotos/sentada.jpeg" alt="Thayse no consultório">
+    </div>
+
+    <!-- CARD 4: ATENDIMENTO -->
+    <div class="card">
+      <p class="rotulo">Atendimento</p>
+      <h2>Online, no seu ritmo</h2>
+      <p>O atendimento é 100% online, o que permite que você faça terapia de onde estiver, com conforto e privacidade. Basta ter um celular ou computador com acesso à internet.</p>
+      <ul class="lista">
+        <li>Atendimento online</li>
+        <li>Idioma: Português</li>
+        <li>Sigilo e confidencialidade garantidos</li>
+      </ul>
+    </div>
+
+    <!-- CARD 5: COMO FUNCIONA AS SESSÕES -->
+    <div class="card">
+      <p class="rotulo">Como funcionam as sessões</p>
+      <h2>Simples e acolhedor</h2>
+      <ul class="lista">
+        <li><strong>Contato inicial:</strong> você me chama e conta um pouco sobre o que precisa</li>
+        <li><strong>Primeira sessão:</strong> nos conhecemos e entendemos juntos seus objetivos</li>
+        <li><strong>Acompanhamento:</strong> encontros regulares, no seu ritmo</li>
+        <li><strong>Evolução:</strong> ajustamos o processo conforme você avança</li>
+      </ul>
+    </div>
+
+    <!-- CARD 6: COMO A TERAPIA PODE AJUDAR -->
+    <div class="card">
+      <p class="rotulo">Como a terapia pode ajudar</p>
+      <h2>Áreas em que atuo</h2>
+      <div class="chips">
+        <span class="chip">Ansiedade</span>
+        <span class="chip">Autoestima</span>
+        <span class="chip">Burnout e estresse</span>
+        <span class="chip">Distúrbio alimentar</span>
+        <span class="chip">TDAH / Hiperatividade</span>
+        <span class="chip">Relacionamento familiar</span>
+        <span class="chip">Transtorno bipolar</span>
+        <span class="chip">Borderline</span>
+        <span class="chip">Compulsão</span>
+        <span class="chip">Distúrbios do sono</span>
+        <span class="chip">Síndrome do pânico</span>
+        <span class="chip">Transtorno de humor</span>
+        <span class="chip">Isolamento social</span>
+        <span class="chip">Autoconhecimento</span>
+        <span class="chip">Dependência de jogos</span>
+        <span class="chip">Estresse pós-traumático</span>
+        <span class="chip">Relacionamento afetivo</span>
+        <span class="chip">Terapia para adolescentes</span>
+        <span class="chip">Violência doméstica</span>
+      </div>
+    </div>
+
+    <!-- CARD FINAL: VENHA FALAR COMIGO -->
+    <div class="card final">
+      <p class="rotulo" style="color: rgba(255,255,255,0.7);">Venha falar comigo</p>
+      <h2>Dê o primeiro passo</h2>
+      <p>Se você sente que precisa de apoio, não precisa passar por isso sozinho(a). Estou aqui para te acolher.</p>
+      <div class="contatos">
+        <!-- ⚠️ TROQUE o href do Instagram pelo perfil real dela -->
+        <a class="btn btn-instagram" href="https://www.instagram.com/" target="_blank" rel="noopener">📸 Instagram</a>
+        <a class="btn btn-whats" href="https://wa.me/55997052670?text=Ol%C3%A1%2C%20Thayse!%20Vim%20pelo%20seu%20site%20e%20gostaria%20de%20agendar%20uma%20sess%C3%A3o." target="_blank" rel="noopener">💬 WhatsApp</a>
+        <!-- ⚠️ TROQUE o href="#" pelo link do Google Forms quando criar -->
+        <a class="btn btn-branco" href="#">📝 Quero saber mais</a>
+      </div>
+    </div>
+
+    <!-- RODAPÉ -->
+    <footer>
+      <p><strong>Thayse Bianchin Rambo</strong> — Psicóloga · CRP 07/32555</p>
+      <p style="margin-top: 6px;">© 2026 · Todos os direitos reservados</p>
+    </footer>
+  </div>
+
+  <!-- SCRIPT: cards aparecem conforme rola a tela -->
+  <script>
+    // Observa cada card e foto; quando entra na tela, adiciona a classe "visivel"
+    const elementos = document.querySelectorAll('.card, .foto');
+    const observador = new IntersectionObserver((entradas) => {
+      entradas.forEach((entrada) => {
+        if (entrada.isIntersecting) {
+          entrada.target.classList.add('visivel');
+          observador.unobserve(entrada.target); // só anima uma vez
+        }
+      });
+    }, { threshold: 0.15 });
+
+    elementos.forEach((el) => observador.observe(el));
+  </script>
+</body>
+</html>
