@@ -71,8 +71,17 @@
       transition: opacity 0.7s ease, transform 0.7s ease;
     }
     .foto.visivel { opacity: 1; transform: translateY(0); }
-
-        .foto-alta img {
+    /* ===== REGRA QUE FALTAVA: controla tamanho e enquadramento das fotos ===== */
+    .foto img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center 20%;
+      display: block;
+      aspect-ratio: 4 / 3;
+    }
+    /* Só a foto 2 mostra mais o topo (testa) */
+    .foto-alta img {
       object-position: center 5%;
     }
     .lista { list-style: none; }
@@ -153,7 +162,7 @@
       </div>
     </div>
 
-    <!-- FOTO 2 -->
+    <!-- FOTO 2 (enquadramento mais alto, mostra a testa) -->
     <div class="foto foto-alta">
       <img src="Fotos/sentada.jpeg" alt="Thayse no consultório">
     </div>
