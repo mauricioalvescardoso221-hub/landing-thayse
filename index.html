@@ -20,541 +20,203 @@
       --sombra: 0 8px 30px rgba(122, 106, 79, 0.12);
       --raio: 20px;
     }
-
     * { margin: 0; padding: 0; box-sizing: border-box; }
-
     html { scroll-behavior: smooth; }
-
     body {
       font-family: 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
       color: var(--texto);
-      background: var(--bege-claro);
+      background: linear-gradient(160deg, var(--bege) 0%, var(--amarelo-suave) 40%, var(--bege-claro) 100%);
+      min-height: 100vh;
       line-height: 1.7;
       overflow-x: hidden;
     }
-
-    .container { max-width: 1100px; margin: 0 auto; padding: 0 24px; }
-
-    /* ===== NAVBAR ===== */
-    nav {
-      position: fixed;
-      top: 0; left: 0; right: 0;
-      background: rgba(250, 246, 236, 0.92);
-      backdrop-filter: blur(10px);
-      z-index: 1000;
-      box-shadow: 0 2px 12px rgba(122, 106, 79, 0.08);
-    }
-    .nav-inner {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 16px 24px;
-      max-width: 1100px;
-      margin: 0 auto;
-    }
-    .logo {
-      font-size: 1.1rem;
-      font-weight: 700;
-      color: var(--marrom-escuro);
-      letter-spacing: 0.5px;
-    }
-    .logo span { color: var(--marrom); font-weight: 400; }
-    .nav-links { display: flex; gap: 28px; list-style: none; }
-    .nav-links a {
-      text-decoration: none;
-      color: var(--texto);
-      font-weight: 500;
-      font-size: 0.95rem;
-      transition: color 0.3s;
-    }
-    .nav-links a:hover { color: var(--marrom); }
-    .btn-whats-nav {
-      background: var(--verde-whats);
-      color: #fff !important;
-      padding: 10px 20px;
-      border-radius: 50px;
-      font-weight: 600;
-      transition: background 0.3s;
-    }
-    .btn-whats-nav:hover { background: var(--verde-whats-escuro); }
-    .menu-toggle { display: none; background: none; border: none; font-size: 1.6rem; cursor: pointer; color: var(--marrom-escuro); }
-
-    /* ===== HERO ===== */
-    .hero {
-      padding: 150px 0 90px;
-      background: linear-gradient(135deg, var(--bege) 0%, var(--amarelo-suave) 50%, var(--bege-claro) 100%);
-      position: relative;
-      overflow: hidden;
-    }
-    .hero::before {
-      content: '';
-      position: absolute;
-      width: 320px; height: 320px;
-      background: rgba(247, 232, 184, 0.5);
-      border-radius: 50%;
-      top: -80px; right: -80px;
-    }
-    .hero::after {
-      content: '';
-      position: absolute;
-      width: 200px; height: 200px;
-      background: rgba(255, 255, 255, 0.4);
-      border-radius: 50%;
-      bottom: -60px; left: -40px;
-    }
-    .hero-inner {
-      position: relative;
-      z-index: 2;
-      display: grid;
-      grid-template-columns: 1.2fr 0.8fr;
-      gap: 50px;
-      align-items: center;
-    }
-    .hero-badge {
-      display: inline-block;
-      background: var(--branco);
-      color: var(--marrom);
-      padding: 8px 18px;
-      border-radius: 50px;
-      font-size: 0.85rem;
-      font-weight: 600;
-      margin-bottom: 20px;
-      box-shadow: var(--sombra);
-    }
-    .hero h1 {
-      font-size: 2.8rem;
-      line-height: 1.2;
-      color: var(--marrom-escuro);
-      margin-bottom: 20px;
-      font-weight: 800;
-    }
-    .hero h1 em {
-      font-style: normal;
-      color: var(--marrom);
-      position: relative;
-    }
-    .hero p {
-      font-size: 1.1rem;
+    .container {
       max-width: 520px;
-      margin-bottom: 30px;
+      margin: 0 auto;
+      padding: 48px 24px 60px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
     }
-    .hero-cta { display: flex; gap: 16px; flex-wrap: wrap; }
-    .btn {
-      display: inline-block;
-      padding: 15px 32px;
-      border-radius: 50px;
-      text-decoration: none;
+    /* ===== FOTO DE PERFIL ===== */
+    .avatar {
+      width: 130px;
+      height: 130px;
+      border-radius: 50%;
+      overflow: hidden;
+      border: 4px solid var(--branco);
+      box-shadow: var(--sombra);
+      margin-bottom: 18px;
+      background: linear-gradient(135deg, var(--amarelo), var(--bege));
+    }
+    .avatar img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center 20%; /* foca no rosto */
+      display: block;
+    }
+    /* ===== NOME E TÍTULO ===== */
+    .nome {
+      font-size: 1.6rem;
+      font-weight: 800;
+      color: var(--marrom-escuro);
+      margin-bottom: 4px;
+    }
+    .cargo {
+      color: var(--marrom);
       font-weight: 600;
       font-size: 1rem;
-      transition: transform 0.2s, box-shadow 0.3s;
+      margin-bottom: 6px;
+    }
+    .credenciais {
+      font-size: 0.85rem;
+      color: var(--texto);
+      margin-bottom: 26px;
+      opacity: 0.9;
+    }
+    /* ===== BOTÕES (pilha estilo Beacons) ===== */
+    .botoes {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      margin-bottom: 30px;
+    }
+    .btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      width: 100%;
+      padding: 17px 24px;
+      border-radius: 50px;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 1.02rem;
+      border: 2px solid transparent;
+      transition: transform 0.2s, box-shadow 0.3s, background 0.3s;
+      cursor: pointer;
+      background: none;
+      font-family: inherit;
+      color: inherit;
     }
     .btn:hover { transform: translateY(-2px); }
-    .btn-whats {
+    .btn-primario {
       background: var(--verde-whats);
       color: #fff;
       box-shadow: 0 6px 20px rgba(37, 211, 102, 0.3);
     }
-    .btn-whats:hover { background: var(--verde-whats-escuro); }
-    .btn-outline {
-      background: transparent;
+    .btn-primario:hover { background: var(--verde-whats-escuro); }
+    .btn-branco {
+      background: var(--branco);
       color: var(--marrom-escuro);
-      border: 2px solid var(--marrom);
+      box-shadow: var(--sombra);
+      border-color: rgba(122, 106, 79, 0.15);
     }
-    .btn-outline:hover { background: var(--marrom); color: #fff; }
-    .hero-card {
+    .btn-branco:hover { box-shadow: 0 10px 30px rgba(122, 106, 79, 0.2); }
+    .btn-marrom {
+      background: var(--marrom);
+      color: #fff;
+      box-shadow: var(--sombra);
+    }
+    .btn-marrom:hover { background: var(--marrom-escuro); }
+    /* ===== SEÇÃO SOBRE (abre ao clicar) ===== */
+    .sobre {
+      width: 100%;
       background: var(--branco);
       border-radius: var(--raio);
-      padding: 30px;
+      padding: 32px 26px;
       box-shadow: var(--sombra);
-      text-align: center;
+      text-align: left;
+      margin-bottom: 30px;
+      display: none; /* escondida até clicar no botão */
     }
-    .hero-card .avatar {
-      width: 120px; height: 120px;
-      border-radius: 50%;
-      background: linear-gradient(135deg, var(--amarelo), var(--bege));
-      margin: 0 auto 16px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 2.6rem;
-      color: var(--marrom);
-    }
-    .hero-card .avatar img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: center 20%;   /* ← foca no rosto (sobe o enquadramento) */
-  border-radius: 50%;
-}
-    .hero-card h3 { color: var(--marrom-escuro); margin-bottom: 4px; }
-    .hero-card .cargo { color: var(--marrom); font-weight: 600; font-size: 0.95rem; }
-    .hero-card .credenciais { font-size: 0.85rem; color: var(--texto); margin-top: 10px; }
-
-    /* ===== SEÇÕES ===== */
-    section { padding: 80px 0; }
-    .section-tag {
-      text-align: center;
-      color: var(--marrom);
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 2px;
-      font-size: 0.85rem;
-      margin-bottom: 10px;
-    }
-    .section-title {
-      text-align: center;
-      font-size: 2rem;
+    .sobre.aberto { display: block; }
+    .sobre h3 {
       color: var(--marrom-escuro);
-      margin-bottom: 16px;
-      font-weight: 800;
-    }
-    .section-sub {
+      font-size: 1.25rem;
+      margin-bottom: 14px;
       text-align: center;
-      max-width: 650px;
-      margin: 0 auto 50px;
-      color: var(--texto);
     }
-
-    /* ===== SOBRE ===== */
-    .sobre { background: var(--branco); }
-    .sobre-grid {
+    .sobre p { margin-bottom: 14px; font-size: 0.98rem; }
+    .sobre-destaques {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 50px;
-      align-items: center;
+      gap: 12px;
+      margin-top: 18px;
     }
-    .sobre-img {
-  width: 100%;
-  max-width: 420px;          /* largura máxima do espaço */
-  aspect-ratio: 4 / 5;       /* proporção vertical, igual à da foto */
-  overflow: hidden;
-  border-radius: 20px;
-}
-
-.sobre-img img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: center 20%;   /* ← NOVO: foca no rosto */
-  display: block;
-}
-    .sobre-texto h3 { font-size: 1.6rem; color: var(--marrom-escuro); margin-bottom: 16px; }
-    .sobre-texto p { margin-bottom: 16px; }
-    .sobre-destaques { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-top: 20px; }
     .destaque {
       background: var(--bege-claro);
       border-radius: 14px;
-      padding: 14px;
-      font-size: 0.9rem;
+      padding: 12px;
+      font-size: 0.88rem;
       font-weight: 500;
     }
     .destaque strong { color: var(--marrom-escuro); display: block; }
-
-    /* ===== ESPECIALIDADES ===== */
-    .especialidades { background: var(--bege-claro); }
-    .cards {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 24px;
-    }
-    .card {
-      background: var(--branco);
-      border-radius: var(--raio);
-      padding: 30px;
-      box-shadow: var(--sombra);
-      transition: transform 0.3s;
-    }
-    .card:hover { transform: translateY(-6px); }
-    .card .icone {
-      width: 56px; height: 56px;
-      border-radius: 14px;
-      background: linear-gradient(135deg, var(--amarelo), var(--bege));
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 1.6rem;
-      margin-bottom: 16px;
-    }
-    .card h4 { color: var(--marrom-escuro); margin-bottom: 8px; font-size: 1.1rem; }
-    .card p { font-size: 0.95rem; }
-
-    /* ===== COMO FUNCIONA ===== */
-    .como-funciona { background: var(--branco); }
-    .passos { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
-    .passo { text-align: center; padding: 20px; }
-    .passo .num {
-      width: 56px; height: 56px;
-      border-radius: 50%;
-      background: var(--marrom);
-      color: #fff;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 1.4rem;
-      font-weight: 700;
-      margin: 0 auto 16px;
-    }
-    .passo h4 { color: var(--marrom-escuro); margin-bottom: 8px; }
-    .passo p { font-size: 0.95rem; }
-
-    /* ===== DEPOIMENTOS ===== */
-    .depoimentos { background: var(--bege-claro); }
-    .depo-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
-    .depo {
-      background: var(--branco);
-      border-radius: var(--raio);
-      padding: 26px;
-      box-shadow: var(--sombra);
-    }
-    .depo .estrelas { color: #E8B84B; margin-bottom: 12px; letter-spacing: 3px; }
-    .depo p { font-size: 0.95rem; font-style: italic; margin-bottom: 16px; }
-    .depo .autor { font-weight: 700; color: var(--marrom-escuro); font-size: 0.9rem; }
-
-    /* ===== CTA FINAL ===== */
-    .cta {
-      background: linear-gradient(135deg, var(--marrom) 0%, var(--marrom-escuro) 100%);
-      text-align: center;
-      padding: 80px 0;
-    }
-    .cta h2 { color: #fff; font-size: 2rem; margin-bottom: 16px; font-weight: 800; }
-    .cta p { color: rgba(255,255,255,0.9); max-width: 600px; margin: 0 auto 30px; }
-    .cta .btn-whats { box-shadow: 0 6px 20px rgba(0,0,0,0.2); }
-
     /* ===== RODAPÉ ===== */
     footer {
-      background: var(--marrom-escuro);
-      color: rgba(255,255,255,0.8);
-      padding: 40px 0;
-      text-align: center;
-      font-size: 0.9rem;
+      width: 100%;
+      margin-top: 10px;
+      font-size: 0.85rem;
+      color: var(--texto);
+      opacity: 0.85;
     }
-    footer strong { color: #fff; }
-
-    /* ===== BOTÃO WHATSAPP FLUTUANTE ===== */
-    .whats-float {
-      position: fixed;
-      bottom: 24px;
-      right: 24px;
-      width: 60px; height: 60px;
-      background: var(--verde-whats);
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      box-shadow: 0 6px 24px rgba(37, 211, 102, 0.4);
-      z-index: 999;
-      transition: transform 0.3s;
-    }
-    .whats-float:hover { transform: scale(1.1); }
-    .whats-float svg { width: 32px; height: 32px; fill: #fff; }
-
+    footer strong { color: var(--marrom-escuro); }
     /* ===== RESPONSIVO ===== */
-    @media (max-width: 900px) {
-      .hero-inner, .sobre-grid { grid-template-columns: 1fr; }
-      .hero { padding: 120px 0 60px; text-align: center; }
-      .hero p { margin: 0 auto 30px; }
-      .hero-cta { justify-content: center; }
-      .cards, .passos, .depo-grid { grid-template-columns: 1fr; }
+    @media (max-width: 480px) {
+      .container { padding: 36px 20px 50px; }
+      .nome { font-size: 1.4rem; }
       .sobre-destaques { grid-template-columns: 1fr; }
-      .nav-links {
-        display: none;
-        position: absolute;
-        top: 100%; left: 0; right: 0;
-        background: var(--bege-claro);
-        flex-direction: column;
-        padding: 20px;
-        gap: 16px;
-        box-shadow: var(--sombra);
-      }
-      .nav-links.active { display: flex; }
-      .menu-toggle { display: block; }
-      .hero h1 { font-size: 2.1rem; }
     }
   </style>
 </head>
 <body>
-
-  <!-- NAVBAR -->
-  <nav>
-    <div class="nav-inner">
-      <div class="logo">Thayse Bianchin Rambo <span>| Psicóloga</span></div>
-      <button class="menu-toggle" onclick="document.querySelector('.nav-links').classList.toggle('active')">☰</button>
-      <ul class="nav-links">
-        <li><a href="#sobre">Sobre</a></li>
-        <li><a href="#especialidades">Especialidades</a></li>
-        <li><a href="#como-funciona">Como funciona</a></li>
-        <li><a href="#depoimentos">Depoimentos</a></li>
-        <li><a class="btn-whats-nav" href="https://wa.me/55991813219" target="_blank">Agendar consulta</a></li>
-      </ul>
+  <div class="container">
+    <!-- FOTO DE PERFIL -->
+    <div class="avatar">
+      <img src="Fotos/sorrindo.jpeg" alt="Psicóloga Thayse Bianchin Rambo">
     </div>
-  </nav>
 
-  <!-- HERO -->
-  <header class="hero">
-    <div class="container hero-inner">
-      <div>
-        <span class="hero-badge">🌸 Atendimento acolhedor e humanizado</span>
-        <h1>Cuidando da sua <em>saúde mental</em> com acolhimento e ciência</h1>
-        <p>Atendimento psicológico especializado em saúde mental, Transtorno do Espectro Autista (TEA) e terapia ABA. Um espaço seguro para você e sua família.</p>
-        <div class="hero-cta">
-          <a class="btn btn-whats" href="https://wa.me/55991813219" target="_blank">💬 Agendar pelo WhatsApp</a>
-          <a class="btn btn-outline" href="#sobre">Conhecer mais</a>
-        </div>
+    <!-- NOME E CREDENCIAIS -->
+    <h1 class="nome">Thayse Bianchin Rambo</h1>
+    <p class="cargo">Psicóloga Clínica</p>
+    <p class="credenciais">
+      🎓 Formada em Psicologia (2020) · 📚 Pós-graduada em Saúde Mental<br>
+      🧩 Especialista em TEA e ABA
+    </p>
+
+    <!-- PILHA DE BOTÕES -->
+    <div class="botoes">
+      <!-- Botão "Saiba mais" → abre a seção sobre -->
+      <button class="btn btn-branco" onclick="document.getElementById('sobre').classList.toggle('aberto'); this.textContent = this.textContent === '🌸 Saiba mais sobre mim' ? '▲ Fechar' : '🌸 Saiba mais sobre mim';">🌸 Saiba mais sobre mim</button>
+
+      <!-- Botão WhatsApp com mensagem automática -->
+      <a class="btn btn-primario" href="https://wa.me/55997052670?text=Ol%C3%A1%2C%20Thayse!%20Vim%20pelo%20seu%20site%20e%20gostaria%20de%20saber%20mais%20sobre%20o%20atendimento%20psicol%C3%B3gico." target="_blank" rel="noopener">
+        💬 Agendar pelo WhatsApp
+      </a>
+    </div>
+
+    <!-- SEÇÃO SOBRE (aparece ao clicar em "Saiba mais") -->
+    <section id="sobre" class="sobre">
+      <h3>Sobre mim</h3>
+      <p>Formada em Psicologia em 2020, com pós-graduação em Saúde Mental e especialização em TEA (Transtorno do Espectro Autista) e terapia ABA, atuo com acolhimento, escuta ativa e métodos baseados em evidências.</p>
+      <p>Meu trabalho é construído em parceria: cada paciente é único, e o tratamento é planejado respeitando suas necessidades, seu ritmo e sua história.</p>
+      <div class="sobre-destaques">
+        <div class="destaque"><strong>🎓 2020</strong>Formada em Psicologia</div>
+        <div class="destaque"><strong>📚 Pós-graduação</strong>Saúde Mental</div>
+        <div class="destaque"><strong>🧩 TEA</strong>Especialista no espectro autista</div>
+        <div class="destaque"><strong>📈 ABA</strong>Terapia comportamental aplicada</div>
       </div>
-      <div class="hero-card">
-        <div class="avatar">
-  <img src="Fotos/sorrindo.jpeg" alt="Psicóloga" style="width:100%;height:100%;border-radius:50%;object-fit:cover;">
-</div>
-        <h3>Thayse Bianchin Rambo</h3>
-        <p class="cargo">Psicóloga Clínica</p>
-        <p class="credenciais">
-          🎓 Formada em Psicologia (2020)<br>
-          📚 Pós-graduada em Saúde Mental<br>
-          🧩 Especialista em TEA e ABA
-        </p>
-      </div>
-    </div>
-  </header>
+    </section>
 
-  <!-- SOBRE -->
-  <section id="sobre" class="sobre">
-    <div class="container">
-      <p class="section-tag">Sobre mim</p>
-      <h2 class="section-title">Uma jornada dedicada ao cuidado</h2>
-      <div class="sobre-grid">
-        <div class="sobre-img">
-  <img src="Fotos/sentada.jpeg" alt="Thayse no consultório" style="width:100%;height:100%;border-radius:20px;object-fit:cover;object-position:center 20%;">
-</div>
-        <div class="sobre-texto">
-          <h3>Thayse Bianchin Rambo — Psicóloga com formação sólida e olhar humano</h3>
-          <p>Formada em Psicologia em 2020, com pós-graduação em Saúde Mental e especialização em TEA (Transtorno do Espectro Autista) e terapia ABA, atuo com acolhimento, escuta ativa e métodos baseados em evidências.</p>
-          <p>Meu trabalho é construído em parceria: cada paciente é único, e o tratamento é planejado respeitando suas necessidades, seu ritmo e sua história.</p>
-          <div class="sobre-destaques">
-            <div class="destaque"><strong>🎓 2020</strong>Formada em Psicologia</div>
-            <div class="destaque"><strong>📚 Pós-graduação</strong>Saúde Mental</div>
-            <div class="destaque"><strong>🧩 TEA</strong>Especialista no espectro autista</div>
-            <div class="destaque"><strong>📈 ABA</strong>Terapia comportamental aplicada</div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ESPECIALIDADES -->
-  <section id="especialidades" class="especialidades">
-    <div class="container">
-      <p class="section-tag">Especialidades</p>
-      <h2 class="section-title">Áreas de atuação</h2>
-      <p class="section-sub">Atendimento individualizado, com foco no seu bem-estar e no desenvolvimento de habilidades.</p>
-      <div class="cards">
-        <div class="card">
-          <div class="icone">🧠</div>
-          <h4>Saúde Mental</h4>
-          <p>Atendimento para ansiedade, depressão, estresse e outros desafios emocionais, com escuta acolhedora e técnicas baseadas em evidências.</p>
-        </div>
-        <div class="card">
-          <div class="icone">🧩</div>
-          <h4>TEA — Espectro Autista</h4>
-          <p>Acompanhamento especializado para pessoas no espectro autista, respeitando suas particularidades e potencializando seu desenvolvimento.</p>
-        </div>
-        <div class="card">
-          <div class="icone">📈</div>
-          <h4>Terapia ABA</h4>
-          <p>Intervenção comportamental aplicada para o desenvolvimento de habilidades sociais, de comunicação e autonomia.</p>
-        </div>
-        <div class="card">
-          <div class="icone">👨‍👩‍👧</div>
-          <h4>Orientação Familiar</h4>
-          <p>Apoio e orientação para famílias, fortalecendo vínculos e oferecendo estratégias para o dia a dia.</p>
-        </div>
-        <div class="card">
-          <div class="icone">💬</div>
-          <h4>Terapia Individual</h4>
-          <p>Espaço seguro para autoconhecimento, desenvolvimento pessoal e superação de desafios emocionais.</p>
-        </div>
-        <div class="card">
-          <div class="icone">🌱</div>
-          <h4>Desenvolvimento Infantil</h4>
-          <p>Acompanhamento do desenvolvimento infantil com foco em habilidades socioemocionais e comportamentais.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- COMO FUNCIONA -->
-  <section id="como-funciona" class="como-funciona">
-    <div class="container">
-      <p class="section-tag">Como funciona</p>
-      <h2 class="section-title">Simples e acolhedor</h2>
-      <p class="section-sub">Do primeiro contato ao acompanhamento, tudo pensado para o seu conforto.</p>
-      <div class="passos">
-        <div class="passo">
-          <div class="num">1</div>
-          <h4>Entre em contato</h4>
-          <p>Chame no WhatsApp e conte um pouco sobre o que você precisa.</p>
-        </div>
-        <div class="passo">
-          <div class="num">2</div>
-          <h4>Agende sua consulta</h4>
-          <p>Escolha o melhor horário para a sua primeira sessão.</p>
-        </div>
-        <div class="passo">
-          <div class="num">3</div>
-          <h4>Comece seu acompanhamento</h4>
-          <p>Inicie o processo terapêutico em um ambiente seguro e acolhedor.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- DEPOIMENTOS -->
-  <section id="depoimentos" class="depoimentos">
-    <div class="container">
-      <p class="section-tag">Depoimentos</p>
-      <h2 class="section-title">Quem já passou por aqui</h2>
-      <div class="depo-grid">
-        <div class="depo">
-          <div class="estrelas">★★★★★</div>
-          <p>"Atendimento maravilhoso, acolhedor e profissional. Me senti ouvida desde o primeiro momento."</p>
-          <div class="autor">— Maria S.</div>
-        </div>
-        <div class="depo">
-          <div class="estrelas">★★★★★</div>
-          <p>"O acompanhamento para o meu filho com TEA foi transformador. Evolução incrível e muito carinho."</p>
-          <div class="autor">— Ana Paula</div>
-        </div>
-        <div class="depo">
-          <div class="estrelas">★★★★★</div>
-          <p>"Profissional dedicada e muito humana. Recomendo de olhos fechados."</p>
-          <div class="autor">— Carlos R.</div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- CTA FINAL -->
-  <section class="cta">
-    <div class="container">
-      <h2>Pronto para começar seu processo de cuidado?</h2>
-      <p>Dê o primeiro passo em direção ao seu bem-estar. Agende sua consulta com a psicóloga Thayse e descubra um atendimento acolhedor e profissional.</p>
-      <a class="btn btn-whats" href="https://wa.me/55991813219" target="_blank">💬 Agendar pelo WhatsApp</a>
-    </div>
-  </section>
-
-  <!-- RODAPÉ -->
-  <footer>
-    <div class="container">
+    <!-- RODAPÉ -->
+    <footer>
       <p><strong>Thayse Bianchin Rambo</strong> — Psicóloga</p>
       <p>Saúde Mental · TEA · ABA</p>
-      <p style="margin-top: 8px;">Formada em Psicologia (2020) · Pós-graduada em Saúde Mental · Especialista em TEA e ABA</p>
-      <p style="margin-top: 8px;">© 2026 · Todos os direitos reservados</p>
-    </div>
-  </footer>
-
-  <!-- BOTÃO WHATSAPP FLUTUANTE -->
-  <a class="whats-float" href="https://wa.me/55991813219" target="_blank" aria-label="Fale no WhatsApp">
-    <svg viewBox="0 0 32 32"><path d="M16 2C8.3 2 2 8.3 2 16c0 2.5.7 4.8 1.9 6.9L2 30l7.3-1.9c2 .9 4.3 1.4 6.7 1.4 7.7 0 14-6.3 14-14S23.7 2 16 2zm0 25.5c-2.1 0-4.1-.6-5.9-1.6l-.4-.2-4.3 1.1 1.1-4.2-.3-.4c-1.1-1.8-1.8-3.9-1.8-6.2 0-6.4 5.2-11.6 11.6-11.6s11.6 5.2 11.6 11.6-5.2 11.5-11.6 11.5zm6.4-8.7c-.4-.2-2.1-1-2.4-1.2-.3-.1-.6-.2-.8.2-.2.4-.8 1.2-1 1.4-.2.2-.4.3-.7.1-.4-.2-1.5-.6-2.9-1.8-1.1-1-1.8-2.2-2-2.5-.2-.4 0-.6.2-.8l.5-.6c.2-.2.2-.4.4-.6.1-.2.1-.4 0-.6-.1-.2-.8-2-1.1-2.7-.3-.7-.6-.6-.8-.6h-.7c-.2 0-.6.1-.9.4-.3.3-1.2 1.2-1.2 2.9s1.2 3.3 1.4 3.6c.2.2 2.4 3.7 5.9 5.2.8.4 1.5.6 2 .7.8.3 1.6.2 2.2.1.7-.1 2.1-.9 2.4-1.7.3-.8.3-1.5.2-1.7-.1-.1-.3-.2-.7-.4z"/></svg>
-  </a>
-
+      <p style="margin-top: 6px;">© 2026 · Todos os direitos reservados</p>
+    </footer>
+  </div>
 </body>
 </html>
